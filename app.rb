@@ -17,7 +17,7 @@ post "/restaurants" do
   })
 
   search_params = { term: params[:cuisine_type], limit: 10 }
-  city_name = params[:location]
+  city_name     = params[:location]
 
   response = client.search(city_name, search_params)
 
@@ -25,6 +25,7 @@ post "/restaurants" do
   puts @random_selection.name
   puts @random_selection.rating
   puts @random_selection.location.display_address
+  puts @random_selection.url
 
-  erb "<%= [ @random_selection.name, @random_selection.rating, @random_selection.location.display_address ] %>"
+  erb "<%= [ @random_selection.name, @random_selection.rating, @random_selection.url, @random_selection.location.display_address ] %>"
 end
